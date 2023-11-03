@@ -256,16 +256,16 @@ endif()
 list(APPEND ppm_private_defs PPM_CHROMA=${PPM_CHROMA})
 
 # Link libm only if necessary
-include(CheckCSourceCompiles)
-check_c_source_compiles("#include<math.h>\nfloat f; int main(){sqrt(f);return 0;}" HAVE_MATH)
-if(NOT HAVE_MATH)
-  set(CMAKE_REQUIRED_LIBRARIES m)
-  check_c_source_compiles("#include<math.h>\nfloat f; int main(){sqrt(f);return 0;}" HAVE_LIBM_MATH)
-  unset(CMAKE_REQUIRED_LIBRARIES)
-  if(NOT HAVE_LIBM_MATH)
-    message(FATAL_ERROR "Unable to use C math library functions (with or without -lm)")
-  endif()
-endif()
+# include(CheckCSourceCompiles)
+# check_c_source_compiles("#include<math.h>\nfloat f; int main(){sqrt(f);return 0;}" HAVE_MATH)
+# if(NOT HAVE_MATH)
+#   set(CMAKE_REQUIRED_LIBRARIES m)
+#   check_c_source_compiles("#include<math.h>\nfloat f; int main(){sqrt(f);return 0;}" HAVE_LIBM_MATH)
+#   unset(CMAKE_REQUIRED_LIBRARIES)
+#   if(NOT HAVE_LIBM_MATH)
+#     message(FATAL_ERROR "Unable to use C math library functions (with or without -lm)")
+#   endif()
+# endif()
 
 #------------------------------------------------------------------------------#
 # Add source code
